@@ -17,15 +17,11 @@ OptionParser.new do |opts|
 
   opts.banner = "Usage: snipper.rb [options]"
 
-  opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
-    options[:verbose] = v
-  end
-
   opts.on("-f", "--file [FILE]", "File to read from") do |f|
     options[:file] = f 
   end
 
 end.parse!
 
-d = Snipper.new(options)  
+d = Snipper.new(options[:file])  
 d.print
