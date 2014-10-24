@@ -4,19 +4,14 @@ class Snipper
     # this is the hash of options which comes from the opts parser
     @options = options
 
+    # array for slurping file lines into
+    @file_array = Array.new
+
     # the filename which we've passed using -f 
     @filename = @options[:file]
     
     # empty array which is intended to be filled with musicians
     @people_array = Array.new
-
-    # This is the file we'll open with the -f flag
-    tmp_file = File.open(@filename).each_line do |f|
-      @file_array << f.chomp 
-      self.guess_delimiter(f)
-    end
-    # close the file after we're done with it
-    tmp_file.close
 
   end  
   
@@ -28,21 +23,19 @@ class Snipper
       if @options[:verbose]
         puts "DEBUG: Matched on space"
       end 
-      self.split_line(string, " ")
-
+      return " "
     # match on comma delimited line
     elsif /,\s*/.match(string)
       if @options[:verbose]
         puts "DEBUG: Matched on comma"
       end   
-      self.split_line(string, ",")
-
+      return ","
     # match on pipe delimited line
     elsif /\w \| \w/.match(string)
       if @options[:verbose]
         puts "DEBUG: Matched on pipe"
       end   
-      self.split_line(string, "|")
+      return "|"
     end
   end
   
@@ -60,9 +53,16 @@ class Snipper
       "FavoriteColor" => split_line[3].strip, 
       "DateOfBirth" => split_line[4].chomp
     }
+  end
 
-    # add the person to the people_array class
-    @people_array << name_hash
+  def munch(delimiter, line)
+     # This is the file we'll open with the -f flag
+    tmp_file = File.open(@filename).each_line do |f|
+      @file_array << f.chomp 
+      self.guess_delimiter(f)
+    end
+    # close the file after we're done with it
+    tmp_file.close
   end
 
   # method which is intended to be used for pretty printing list of musicians
