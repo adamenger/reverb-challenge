@@ -1,14 +1,12 @@
 # Class to be instantiated which handles the bulk of list processing
 class Snipper  
-  def initialize(options)  
-    # this is the hash of options which comes from the opts parser
-    @options = options
+  def initialize(filename)  
 
     # array for slurping file lines into
     @file_array = Array.new
 
     # the filename which we've passed using -f 
-    @filename = @options[:file]
+    @filename = filename
     
     # empty array which is intended to be filled with musicians
     @people_array = Array.new
