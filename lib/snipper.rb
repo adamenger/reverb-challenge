@@ -20,22 +20,13 @@ class Snipper
 
     # match just on a space delimited line
     if /\w \w/.match(string)
-      if @options[:verbose]
-        puts "DEBUG: Matched on space"
-      end 
-      return " "
+     return " "
     # match on comma delimited line
     elsif /,\s*/.match(string)
-      if @options[:verbose]
-        puts "DEBUG: Matched on comma"
-      end   
-      return ","
+     return ","
     # match on pipe delimited line
     elsif /\w \| \w/.match(string)
-      if @options[:verbose]
-        puts "DEBUG: Matched on pipe"
-      end   
-      return "|"
+     return "|"
     end
   end
   
