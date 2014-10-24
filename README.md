@@ -22,8 +22,8 @@ Buffet | Jimmy | Male |  03-23-1947 | Blue
 ```
 
 ### Running Snipper verbosely
-✗ ruby snipper.rb -f examples/mixed-test.txt -v
 ```
+✗ ruby snipper.rb -f examples/mixed-test.txt -v
 DEBUG: Matched on comma
 DEBUG: Matched on pipe
 DEBUG: Matched on space
