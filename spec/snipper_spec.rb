@@ -5,8 +5,12 @@ describe 'The Snipper' do
 
     options = Hash.new
     options[:file] = "examples/spec-test.txt"
-    s = Snipper.new(options) 
- 
+    s = Snipper.new(options[:file]) 
+
+    it "uses a string to initialize" do
+      expect(s.instance_variable_get(:@filename)).to eq("examples/spec-test.txt")
+    end
+
     it "can determine when a comma is used as a delimiter" do
       delimiter = s.guess_delimiter("Ross, Bob, Male, Blue, 01-01-1900")  
       expect(delimiter).to eq(",")
