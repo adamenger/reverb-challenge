@@ -44,11 +44,10 @@ class Snipper
     }
   end
 
-  def munch(delimiter, line)
+  def read_file
      # This is the file we'll open with the -f flag
     tmp_file = File.open(@filename).each_line do |f|
       @file_array << f.chomp 
-      self.guess_delimiter(f)
     end
     # close the file after we're done with it
     tmp_file.close
@@ -63,4 +62,4 @@ class Snipper
       puts "#{p['LastName']} | #{p['FirstName']} | #{p['Gender']} | #{p['DateOfBirth']} | #{p['FavoriteColor']}"
     end
   end
-end  
+end 
