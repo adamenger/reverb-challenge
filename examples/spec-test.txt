@@ -1,1 +1,3 @@
 Cyrus, Miley, Female, Red, 09-07-1992
+Marley, Bob, Male, Green, 09-07-1939
+Dahlia, Kat, Female, Black, 07-10-1980
