@@ -43,5 +43,9 @@ describe 'The Snipper' do
       name_hash = s.split_line(line, "|")
       expect(name_hash.class).to eq(Hash)
     end
- 
+  
+    it "can load a file into memory which matches file on disk" do
+      s.read_file
+      expect(%x{wc -l #{s.instance_variable_get(:@filename)}}.split.first.to_i).to eq(s.instance_variable_get(:@file_array).length)
+    end 
 end
