@@ -46,6 +46,7 @@ describe 'The Snipper' do
   
     it "can load a file into memory which matches file on disk" do
       s.read_file
+      # assumes unix environment
       expect(%x{wc -l #{s.instance_variable_get(:@filename)}}.split.first.to_i).to eq(s.instance_variable_get(:@file_array).length)
     end 
 end
