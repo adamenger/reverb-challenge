@@ -53,7 +53,19 @@ class Snipper
     tmp_file.close
   end
 
-  # method which is intended to be used for pretty printing list of musicians
+  def process_lines(lines)
+    processed_array = Array.new
+    lines.each do |line|
+      processed_array << self.split_line(line.chomp, self.guess_delimiter(line))
+    end
+    processed_array
+  end
+
+  def sort(array, attribute)
+    array.sort_by { |k| k[attribute] }
+  end
+  
+  # method which is intended to be used for pretty rinting list of musicians
   def print
       table_header = "Last Name | First Name | Gender | Date of Birth | Favorite Color"
       puts table_header
