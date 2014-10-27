@@ -61,11 +61,13 @@ describe 'The Snipper' do
 
     it "can sort the loaded file and return an array" do
       sorted = s.sort(processed_lines, "LastName")
+      puts sorted
       expect(sorted.class).to eq(Array)
     end 
     
     it "sorted array contains hash" do
-      sorted = s.sort(processed_lines, "LastName")
+      sorted = s.sort(processed_lines, ["LastName"])
       expect(sorted[0].class).to eq(Hash)
     end 
+    
 end
